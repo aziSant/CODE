@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Validação</title>
+    <link rel="stylesheet" href="script.css"> 
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container_form">
+
+        <h1>Formulário de Cadastro</h1>
+
+        <form class="form" action="#" method="post">
+            
+            <div class="form_grupo">
+                <label for="nome" class="form_label">Nome</label>
+                <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome" required>
+            </div>
+            
+            <div class="form_grupo">
+                <label for="e-mail" class="form_label">Email</label>
+                <input type="email" name="email" class="form_input" id="email" placeholder="seuemail@email.com" required>
+            </div>
+            
+            <div class="form_grupo">
+                <label for="datanascimento" class="form_label">Data de Nascimento</label>
+                <input type="date" name="datanascimento" class="form_input" id="datanascimento" placeholder="Data de Nascimento" required>
+            </div>        
+
+            <div class="form_grupo">
+                
+                <label for="estadocivil" class="text">Estado civil</label>
+                <select name="estadocivil" class="dropdown" required>
+                    
+                    <option selected disabled class="form_select_option" value="">Selecione</option>
+                    <option value="Solteiro" class="form_select_option">Solteiro(a)</option>
+                    <option value="Casado" class="form_select_option">Casado(a) </option>
+                    <option value="Outros" class="form_select_option">Outros</option>                    
+                          
+                
+                </select>
+
+            </div>
+
+            <th class="campo">
+                <label>Informe seu Sexo:</label required><br>
+                <label>
+                    <input type="radio" name="sexo" id="feminino">Feminino
+                </label>
+                <label>
+                    <input type="radio" name="sexo" id="masculino">Masculino
+                </label>
+
+            <div class="form_grupo">
+
+                <span class="legenda"> Escolha oque Você quer aprender:</span>
+
+                <div class="check-btn">
+                    <input type="checkbox" class="form_new_input" id="Analise" name="aprender" value="Analise">
+                    <label for="Analise" class="form_label check_label"> <span class="check_new_btn"></span>Análise</label>
+                </div>
+
+                <div class="check-btn">
+                    <input type="checkbox" class="form_new_input" id="banco" name="aprender" value="banco">
+                    <label for="banco" class="form_label check_label"><span class="check_new_btn"></span>Banco de Dados</label>
+                </div>
+
+                <div class="check-btn">
+                    <input type="checkbox" class="form_new_input" id="dev" name="aprender" value="dev">
+                    <label for="dev" class="form_label check_label"> <span class="check_new_btn"></span>Desenvolvimento</label>
+                </div>
+<div class="check-btn">
+    <input type="checkbox" class="form_new_input" name="Redes" id="Redes" value="Redes">
+    <label for="Redes" class="form_label check_label"> <span class="check_new_btn"></span>Redes</label>
+
+
+</div> 
+<br>
+<br>
+           <br> <button type="submit">Enviar Respostas</button><br>
+
+            
+        </form>
+
+</div><!--container_form-->
