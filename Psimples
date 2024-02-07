@@ -1,0 +1,48 @@
+package programapoo;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Computador {
+    
+    //atributos
+    private int memoria, hd;
+    private float tela, valor;
+    private String cor, modelo, tamanho, processador;
+    private boolean novo, video;
+
+    
+    //construtores
+
+    public Computador() {
+    }
+    
+    public Computador(int memoria) {
+        this.memoria = memoria;
+    }
+
+    public Computador(int hd, String cor, String tamanho) {
+        this.hd = hd;
+        this.cor = cor;
+        this.tamanho = tamanho;
+    }
+
+    public Computador(boolean novo, boolean video) {
+        this.novo = novo;
+        this.video = video;
+    }
+
+    public Computador(String cor, String modelo, String tamanho, String processador) {
+        this.cor = cor;
+        this.modelo = modelo;
+        this.tamanho = tamanho;
+        this.processador = processador;
+    }
+
+    public Computador(int memoria, int hd, float tela, float valor, String modelo, String processador) {
+        this.memoria = memoria;
+        this.hd = hd;
+        this.tela = tela;
+        this.valor = valor;
+        this.modelo = modelo;
+        this.processador = processador;
+    }
