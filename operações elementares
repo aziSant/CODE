@@ -1,0 +1,177 @@
+•Linguagem Utilizada: C
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct sPonto{
+    int dados;
+    struct sPonto *proximo;
+} Ponto;
+
+typedef struct sListas{
+    Ponto *inicio;
+    Ponto *fim;
+} Listas;
+void criar(Listas *lista){
+    lista->inicio = NULL;
+    lista->fim = NULL;
+}
+
+//OPCAO MOSTRAR LISTA 2
+void consulta(Listas *lista){
+    Ponto *p;
+    printf("Lista: ");
+        for (p = lista->inicio; p != NULL; p = p->proximo){
+            printf("%d ->> ", p->dados);
+}
+    printf("NULL\n");
+}
+
+//OPCAO INSERIR 1
+void inserir(Listas *lista, int a){
+    Ponto *novo;
+    novo = (Ponto*)malloc(sizeof(Ponto));
+    if (novo != NULL){
+        novo->dados = a;
+        Ponto *atual, *anterior;
+        anterior = NULL;
+        atual = lista->inicio;
+     while (atual != NULL && atual->dados < a){
+         anterior = atual;
+         atual = atual->proximo;
+    }
+         novo->proximo = atual;
+        if (anterior != NULL){
+            anterior->proximo = novo;
+        }
+        else{
+         lista->inicio = novo;
+         }
+    }
+    else{
+         printf("Memória Insuficiente\n");
+    }
+}
+//OPCAO REMOVER ELEMENTO 4
+void remover(Listas *lista, int a){
+    Ponto *atual, *anterior;
+    anterior = NULL;
+    atual = lista->inicio;
+    while (atual != NULL && atual->dados != a){
+        anterior = atual;
+        atual = atual->proximo;
+    }
+    if (anterior != NULL){
+         if (atual != NULL) {
+             anterior->proximo = atual->proximo;
+             free(atual);
+             printf("Valor Removido\n");
+         }
+         else{
+             printf("Valor não encontrado\n");
+         }
+    }
+    else{
+        printf("Lista Vazia\n");
+    }
+}
+
+
+//OPCAO ALTERAR ELEMENTO 3
+void alterar(Listas *lista, int a, int b){
+    Ponto *atual, *anterior;
+    anterior = NULL;
+    atual = lista->inicio;
+    while (atual != NULL && atual->dados != a){
+        anterior = atual;
+        atual = atual->proximo;
+    }
+    if (anterior != NULL){
+        if (atual != NULL){
+
+            atual->dados = b;
+
+                    printf("Alterado Com Sucesso! ;-D\n");
+
+        }
+        else{
+            printf("Valor Indisponível... :-(\n");
+        }
+    }
+    else{
+         printf("Lista Vazia\n");
+    }
+}
+
+// OPCAO SAIR e RESETAR a MEMORIA - 5
+int vazia(Listas *lista) {
+    return(lista->inicio == NULL);
+}
+
+void reset(Listas *lista){
+    Ponto *auxiliar = lista->inicio;
+    if (auxiliar != NULL){
+         while (auxiliar != NULL){
+             lista->inicio = auxiliar->proximo;
+             free(auxiliar);
+             auxiliar = lista->inicio;
+         }
+     printf("Todos os elementos foram removidos!\n");
+     }
+     else{
+         printf("Lista Vazia\n");
+     }
+}
+
+void main(){
+
+    Listas listacriada;
+    int valor1, op, valor2, saida;
+    criar(&listacriada);
+    saida = 0;
+    printf("AVA1 ESTRUTURA DE DADOS - Aluna: Izabelle \n");
+    while (saida == 0) {
+        printf("\n 1 - Inserir Elemento\n");
+        printf(" 2 - Mostrar Lista\n");
+        printf(" 3 - Alterar Elemento da Lista\n");
+        printf(" 4 - Remover Elemento da Lista\n");
+        printf(" 5 - Sair\n");
+        printf("\n Digite o Número da Opção: ");
+        scanf("%d", &op);
+        system("cls");
+            switch (op) {
+                case 1: // inserir elemento em ordem
+                    printf("Valor:");
+                    scanf("%d", &valor1);
+                    inserir(&listacriada, valor1);
+                    break;
+                case 2: // mostrar lista
+                    if (vazia(&listacriada)) {
+                         printf("Lista Vazia...\n");
+                    }
+                    else {
+                         consulta(&listacriada);
+                    }
+                    break;
+                case 3: // alterar um elemento
+                    printf("Valor Para Ser Alterado:");
+                    scanf("%d", &valor1);
+                    printf("Novo Valor:");
+                    scanf("%d", &valor2);
+                    alterar(&listacriada, valor1, valor2);
+                    break;
+                case 4: // remover determinado elemento
+                    printf("Valor:");
+                    scanf("%d", &valor1);
+                    remover(&listacriada, valor1);
+                    break;
+                case 5: // abandonar o programa
+                    reset(&listacriada);
+                    saida = 1;
+                    exit(0);
+                default:
+                    printf("Opção Inválida!\n");
+                }
+    }
+}
