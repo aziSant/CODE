@@ -1,0 +1,18 @@
+def contar_numeros_pares(sequencia):
+    numeros_pares = 0
+    for numero in sequencia:
+        if numero % 2 == 0:
+            numeros_pares += 1
+    return numeros_pares
+
+def main():
+    sequencia = input("Digite a sequência de números separados por espaço: ")
+    numeros = sequencia.split()
+    numeros = [int(num) for num in numeros]
+
+    numeros_pares = contar_numeros_pares(numeros)
+
+    print("O número de números pares na sequência é:", numeros_pares)
+
+if __name__ == "__main__":
+    main()
