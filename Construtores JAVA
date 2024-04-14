@@ -1,0 +1,136 @@
+import java.util.Scanner;
+class Computador {
+    private String marca;
+    private String modelo;
+    private int anoFabricacao;
+    private double preco;
+    private boolean ligado;
+
+    // Construtor default
+    public Computador() {
+        // Inicializa os atributos com valores padrão
+        marca = "";
+        modelo = "";
+        anoFabricacao = 0;
+        preco = 0.0;
+        ligado = false;
+    }
+    // Construtor com parâmetros
+    public Computador(String marca, String modelo, int anoFabricacao, double preco, boolean ligado) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.preco = preco;
+        this.ligado = ligado;
+    }
+    // Métodos getters e setters
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public boolean isLigado() {
+        return ligado;
+    }
+
+    public void setLigado(boolean ligado) {
+        this.ligado = ligado;
+    }
+    // Método para imprimir todos os atributos
+    public void imprimir() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano de Fabricação: " + anoFabricacao);
+        System.out.println("Preço: " + preco);
+        System.out.println("Está ligado? " + (ligado ? "Sim" : "Não"));
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Instanciando objetos Computador
+        Computador computador1 = new Computador();
+        Computador computador2 = new Computador();
+        Computador computador3 = new Computador();
+        Computador computador4 = new Computador();
+
+        // Preenchendo os atributos dos objetos solicitando dados ao usuário
+        System.out.println("Preencha os dados para o primeiro computador:");
+        preencherDados(computador1, scanner);
+
+        System.out.println("Preencha os dados para o segundo computador:");
+        preencherDados(computador2, scanner);
+
+        System.out.println("Preencha os dados para o terceiro computador:");
+        preencherDados(computador3, scanner);
+
+        System.out.println("Preencha os dados para o quarto computador:");
+        preencherDados(computador4, scanner);
+
+        // Exibindo todos os atributos dos quatro objetos
+        System.out.println("Dados dos computadores:");
+        computador1.imprimir();
+        computador2.imprimir();
+        computador3.imprimir();
+        computador4.imprimir();
+
+        scanner.close();
+    }
+
+
+    // Método para preencher os dados de um computador
+    public static void preencherDados(Computador computador, Scanner scanner) {
+        System.out.print("Marca: ");
+        computador.setMarca(scanner.nextLine());
+
+        System.out.print("Modelo: ");
+        computador.setModelo(scanner.nextLine());
+
+        System.out.print("Ano de Fabricação: ");
+        computador.setAnoFabricacao(Integer.parseInt(scanner.nextLine()));
+
+        System.out.print("Preço: ");
+        computador.setPreco(Double.parseDouble(scanner.nextLine()));
+
+        System.out.print("Está ligado? (true/false): ");
+        computador.setLigado(Boolean.parseBoolean(scanner.nextLine()));
+
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
