@@ -1,0 +1,47 @@
+package com.example.guessnumber;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+
+    int numeroSecreto;
+
+    public void gerarNovoNumero() {
+        Random rand = new Random();
+        numeroSecreto = rand.nextInt(100) + 1; // número entre 1 e 100
+    }
+
+    public void verificarPalpite(View view) {
+        EditText entradaNumero = findViewById(R.id.editTextNumero);
+        TextView textoResultado = findViewById(R.id.textResultado);
+
+        int palpite = Integer.parseInt(entradaNumero.getText().toString());
+
+        if (palpite > numeroSecreto) {
+            textoResultado.setText("Muito alto! Tente novamente.");
+        } else if (palpite < numeroSecreto) {
+            textoResultado.setText("Muito baixo! Tente novamente.");
+        } else {
+            textoResultado.setText("Parabéns! Você acertou!");
+            Toast.makeText(this, "Gerando novo número...", Toast.LENGTH_SHORT).show();
+            gerarNovoNumero();
+        }
+
+        entradaNumero.setText("");
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        gerarNovoNumero();
+    }
+}
